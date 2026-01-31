@@ -1,68 +1,196 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-  margin: 0;
+  color: white;
+}
+
+/* ---------- LANDING VIDEO ---------- */
+.video-container {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+}
+
+/* ---------- COMMON BG IMAGE ---------- */
+.bg-page {
   min-height: 100vh;
+  background: url("/src/assets/bg.jpg") no-repeat center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
+/* ---------- UI ---------- */
+.btn {
+  background: #38bdf8;
+  padding: 12px 22px;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 15px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.btn-outline {
+  border: 1px solid #38bdf8;
+  padding: 12px 22px;
+  border-radius: 8px;
 }
+
+.auth {
+  background: rgba(2,6,23,0.85);
+  padding: 30px;
+  border-radius: 14px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+.auth button {
+  padding: 10px;
+  background: #38bdf8;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(2,6,23,0.85);
+  padding: 20px;
+  border-radius: 12px;
+}
+.auth, .card {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 
+    0 0 20px rgba(56,189,248,0.25),
+    inset 0 0 10px rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.auth {
+  animation: float 4s ease-in-out infinite;
+}
+button, .btn {
+  transition: all 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(56,189,248,0.45);
+}
+.auth input:focus {
+  outline: none;
+  box-shadow: 0 0 12px rgba(56,189,248,0.6);
+}
+.bg-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 0;
+  pointer-events: none;
+
+}
+
+.bg-page > * {
+  position: relative;
+  z-index: 1;
+}
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+/* Prevent unwanted scrolling & space */
+body {
+  overflow: hidden;
+}
+
+/* Ensure full height usage */
+.video-container,
+.bg-page {
+  height: 100vh;
+}
+
+/* Center content perfectly */
+.container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* Make text visible on dark pages */
+.bg-page h1,
+.bg-page h2,
+.bg-page h3,
+.bg-page p,
+.bg-page li,
+.bg-page span,
+.bg-page label {
+  color: white;
+}
+
+/* Navbar links visibility */
+a {
+  color: white;
+}
+
+a:hover {
+  color: #38bdf8;
+}
+
+/* Buttons text clarity */
+button {
+  color: #020617;
+}
+.card {
+  background: rgba(2, 6, 23, 0.9);
+}
+
