@@ -1,0 +1,29 @@
+.finance-page {
+  padding: 40px;
+  color: white;
+}
+
+.finance-page h1 {
+  margin-bottom: 30px;
+}
+
+.finance-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.finance-cards div {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.finance-cards div:hover {
+  background: rgba(0, 150, 255, 0.35);
+  transform: translateY(-5px);
+}
