@@ -193,4 +193,47 @@ button {
 .card {
   background: rgba(2, 6, 23, 0.9);
 }
+/* ---------- SPACING & BREATHING FIX ---------- */
 
+/* Give sections vertical space */
+.bg-page .container {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Loosen grid spacing */
+.grid {
+  gap: 30px;
+}
+
+/* Cards need breathing room */
+.card {
+  padding: 28px;
+  line-height: 1.6;
+}
+
+/* Headings should not stick to content */
+.card h3 {
+  margin-bottom: 14px;
+}
+
+/* Separate buttons inside cards */
+.card button {
+  margin-top: 12px;
+}
+
+/* Make paragraphs lighter & airy */
+.card p {
+  margin-bottom: 8px;
+  color: #cbd5f5;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    gap: 24px;
+  }
+
+  .card {
+    padding: 24px;
+  }
+}
