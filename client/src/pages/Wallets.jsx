@@ -34,7 +34,7 @@ const Wallets = () => {
       ))}
 
       <input
-        placeholder="Wallet Name (Cash, Bank, UPI...)"
+        placeholder="Wallet Name (Cash, Bank, UPI)"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
