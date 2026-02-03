@@ -64,24 +64,26 @@ export default function Dashboard() {
       <Navbar />
 
       <div className="bg-page">
-        <div className="container" style={{ padding: "30px 0" }}>
+        <div className="container">
           <h2>Dashboard</h2>
 
-          <div className="grid" style={{ marginBottom: "30px" }}>
+          {/* SUMMARY CARDS */}
+          <div className="grid">
             <ExpenseCard title="Income" amount={`₹${income}`} />
             <ExpenseCard title="Expenses" amount={`₹${totalExpense}`} />
             <ExpenseCard title="Balance" amount={`₹${balance}`} />
           </div>
 
           <button
-            style={{ marginBottom: "20px" }}
+            style={{ margin: "20px 0" }}
             onClick={() => setShowFinance(!showFinance)}
           >
             Financial Overview
           </button>
 
+          {/* TRANSACTIONS + ADD EXPENSE */}
           {!showFinance && (
-            <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "20px" }}>
+            <div className="dashboard-grid">
               <div className="card">
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                   <h3>Recent Transactions</h3>
@@ -92,9 +94,17 @@ export default function Dashboard() {
 
                 <ul style={{ listStyle: "none", marginTop: "15px" }}>
                   {transactions.map((t, i) => (
-                    <li key={i} style={{ display: "flex", justifyContent: "space-between" }}>
+                    <li
+                      key={i}
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        marginBottom: "10px",
+                      }}
+                    >
                       <span>{getIcon(t.title)} {t.title}</span>
-                      <span>- ₹{t.amount}
+                      <span>
+                        - ₹{t.amount}
                         <button onClick={() => deleteExpense(i)}> ❌</button>
                       </span>
                     </li>
@@ -104,29 +114,33 @@ export default function Dashboard() {
 
               <div className="card">
                 <h3>Add Expense</h3>
+
                 <input
                   placeholder="Expense Title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
+
                 <input
-                  placeholder="Amount"
                   type="number"
+                  placeholder="Amount"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                 />
+
                 <button onClick={addExpense}>Add</button>
               </div>
             </div>
           )}
 
+          {/* FINANCIAL OVERVIEW */}
           {showFinance && (
-            <>
+            <div className="grid">
               <MonthlySummary expenses={transactions} />
               <CategorySummary expenses={transactions} />
               <Wallets />
               <IncomeVsExpense expenses={transactions} income={income} />
-            </>
+            </div>
           )}
         </div>
       </div>
